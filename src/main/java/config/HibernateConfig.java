@@ -4,7 +4,6 @@ import org.hibernate.jpa.HibernatePersistenceProvider;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.PropertySource;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
@@ -16,7 +15,6 @@ import javax.sql.DataSource;
 
 @Configuration
 @EnableTransactionManagement
-@PropertySource("classpath:db.properties")
 @ComponentScan(value = "java")
 public class HibernateConfig {
 
@@ -31,7 +29,6 @@ public class HibernateConfig {
 
         return entityManagerFactoryBean;
     }
-
     private HibernateJpaVendorAdapter vendorAdaptor() {
         HibernateJpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
         vendorAdapter.setShowSql(true);
@@ -42,10 +39,10 @@ public class HibernateConfig {
     @Bean
     public DataSource dataSource() {
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
-        dataSource.setDriverClassName("db.driver");
-        dataSource.setUrl("db.url");
-        dataSource.setUsername("db.username");
-        dataSource.setPassword("db.password");
+        dataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
+        dataSource.setUrl("jdbc:mysql://localhost:3306/dbone?verifyServerCertificate=false&useSSL=false&requireSSL=false&useLegacyDatetimeCode=false&amp&serverTimezone=UTC");
+        dataSource.setUsername("root");
+        dataSource.setPassword("root");
         return dataSource;
     }
 

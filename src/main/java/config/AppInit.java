@@ -6,7 +6,7 @@ import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatche
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 
-public class SpringMvcDispatcherServlet extends AbstractAnnotationConfigDispatcherServletInitializer {
+public class AppInit extends AbstractAnnotationConfigDispatcherServletInitializer {
     @Override
     protected Class<?>[] getRootConfigClasses() {
         return null;
@@ -30,9 +30,9 @@ public class SpringMvcDispatcherServlet extends AbstractAnnotationConfigDispatch
         registerHiddenFieldFilter(aServletContext);
     }
 
-
     private void registerHiddenFieldFilter(ServletContext aContext) {
         aContext.addFilter("hiddenHttpMethodFilter",
                 new HiddenHttpMethodFilter()).addMappingForUrlPatterns(null ,true, "/*");
     }
+
 }
