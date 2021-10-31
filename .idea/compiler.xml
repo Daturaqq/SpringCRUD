@@ -10,7 +10,7 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="SpringCRUD" target="16.0.1" />
+      <module name="SpringCRUD" target="8" />
     </bytecodeTargetLevel>
   </component>
 </project>

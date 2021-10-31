@@ -32,7 +32,7 @@ public class HibernateConfig {
         entityManagerFactoryBean.setJpaVendorAdapter(vendorAdaptor());
         entityManagerFactoryBean.setDataSource(dataSource());
         entityManagerFactoryBean.setPersistenceProviderClass(HibernatePersistenceProvider.class);
-        entityManagerFactoryBean.setPackagesToScan("java.model");
+        entityManagerFactoryBean.setPackagesToScan("model");
         entityManagerFactoryBean.setJpaProperties(props);
 
         return entityManagerFactoryBean;

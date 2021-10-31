@@ -18,10 +18,10 @@ public class UserController {
     public String mainPage(Model model) {
         List<User> userList = service.getAllUsers();
         model.addAttribute("users", userList);
-        return "index";
+        return "mainPage";
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/show/{id}")
     public String showUser(@PathVariable("id") Long id, Model model) {
         model.addAttribute("user", service.getUser(id));
         return "showUser";
@@ -39,19 +39,19 @@ public class UserController {
         return "redirect:/";
     }
 
-    @GetMapping("/{id}/edit")
+    @GetMapping("/edit/{id}")
     public String editUser(@PathVariable("id") Long id, Model model) {
-        model.addAttribute("user", service.getUser(id));
+        model.addAttribute("editUser", service.getUser(id));
         return "editUser";
     }
 
-    @PatchMapping("/{id}")
-    public String updateUser(@ModelAttribute("user") User user, @PathVariable("id") Long id) {
-        service.edit(user);
+    @PatchMapping("/saveEdit/{id}")
+    public String updateUser(@ModelAttribute("editUser") User editUser, @PathVariable("id") Long id) {
+        service.edit(editUser, id);
         return "redirect:/";
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/delete/{id}")
     public String deleteUser(@PathVariable("id") Long id) {
         service.delete(id);
         return "redirect:/";
