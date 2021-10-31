@@ -20,7 +20,7 @@ public class UserController {
     public String mainPage(Model model) {
         List<User> userList = service.getAllUsers();
         model.addAttribute("users", userList);
-        return "mainPage";
+        return "index";
     }
 
     @GetMapping("/{id}")
