@@ -16,7 +16,12 @@ import java.util.Properties;
 
 @Configuration
 @EnableTransactionManagement
-@ComponentScan(value = "java")
+@ComponentScan(basePackages = "java")
+@ComponentScan("service")
+@ComponentScan("controller")
+@ComponentScan("dao")
+@ComponentScan("model")
+@ComponentScan("config")
 public class HibernateConfig {
 
     @Bean

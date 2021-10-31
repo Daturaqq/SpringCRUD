@@ -1,6 +1,7 @@
 package controller;
 
 import model.User;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -10,11 +11,8 @@ import java.util.List;
 
 @Controller
 public class UserController {
-    private final UserService service;
-
-    public UserController(UserService service) {
-        this.service = service;
-    }
+    @Autowired
+    private UserService service;
 
     @GetMapping("/")
     public String mainPage(Model model) {
@@ -38,7 +36,7 @@ public class UserController {
     @PostMapping("/save")
     public String saveUser(@ModelAttribute("user") User user) {
         service.add(user);
-        return "redirect:";
+        return "redirect:/";
     }
 
     @GetMapping("/{id}/edit")
@@ -50,12 +48,12 @@ public class UserController {
     @PatchMapping("/{id}")
     public String updateUser(@ModelAttribute("user") User user, @PathVariable("id") Long id) {
         service.edit(user);
-        return "redirect:";
+        return "redirect:/";
     }
 
     @DeleteMapping("/{id}")
     public String deleteUser(@PathVariable("id") Long id) {
         service.delete(id);
-        return "redirect:";
+        return "redirect:/";
     }
 }
