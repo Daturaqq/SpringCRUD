@@ -11,8 +11,16 @@ import java.util.List;
 
 @Controller
 public class UserController {
-    @Autowired
-    private UserService service;
+    private final UserService service;
+
+    public UserController(UserService service) {
+        this.service = service;
+        // Юзеры для теста
+        service.add(new User("One", "Two","OneTwo@mail.com"));
+        service.add(new User("Some", "One","Someone@mail.com"));
+        service.add(new User("123", "321","123321@mail.com"));
+        service.add(new User("Elon", "Tusk","ElonTusk@mail.com"));
+    }
 
     @GetMapping("/")
     public String mainPage(Model model) {

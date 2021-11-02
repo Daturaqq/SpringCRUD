@@ -33,7 +33,11 @@ public class UserServiceImp implements UserService {
 
     @Override
     @Transactional
-    public void edit(User user) {
+    public void edit(User editUser, long id) {
+        User user = DAO.getUser(id);
+        user.setFirstname(editUser.getFirstname());
+        user.setLastname(editUser.getLastname());
+        user.setEmail(editUser.getLastname());
         DAO.edit(user);
     }
 
